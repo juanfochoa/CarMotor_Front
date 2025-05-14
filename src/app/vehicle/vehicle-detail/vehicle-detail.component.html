@@ -1,0 +1,48 @@
+<div class="container-fluid">
+  <!-- Imagen superior -->
+  <div class="d-flex flex-row justify-content-center px-5 mb-5">
+    <img 
+      src="https://carnovo.com/wp-content/uploads/2018/02/18C0032_05.jpg"
+      alt="Vehicle Banner"
+      style="height: 350px; width: 100%; object-fit: cover;"
+    >
+  </div>
+
+  <!-- Información del vehículo -->
+  <div class="text-center mb-5">
+    <h1 class="fw-bold">{{ vehicle.brand }} {{ vehicle.series }}</h1>
+    <h3 class="fw-semi-bold">{{ vehicle.model }} - {{ vehicle.type }}</h3>
+    <p class="fs-5">Capacidad: {{ vehicle.capacity }} ocupantes</p>
+    <p>Último dígito de la placa: {{ vehicle.lastPlateDigit }}</p>
+    <p class="fs-3 fw-bold text-success">${{ vehicle.price }}</p>
+  </div>
+
+  <!-- Sede -->
+  <div class="mx-5">
+    <h4>Sede</h4>
+    <hr>
+    <p><strong>Nombre:</strong> 
+      <a routerLink="/locations/{{ vehicle.location.id }}">
+        {{ vehicle.location.name }}
+      </a>
+    </p>
+    <p><strong>Dirección:</strong> {{ vehicle.location.address }}</p>
+    <p><strong>Teléfono:</strong> {{ vehicle.location.phoneNumber }}</p>
+    <p><strong>Horario:</strong> {{ vehicle.location.schedule }}</p>
+  </div>
+
+  <!-- Asesor -->
+  <div class="mx-5 mt-4">
+    <h4>Asesor</h4>
+    <hr>
+    <p><strong>Nombre:</strong> 
+      <a routerLink="/assessors/{{ vehicle.assessor.id }}">
+        {{ vehicle.assessor.name }}
+      </a>
+    </p>
+    <p><strong>Contacto:</strong> {{ vehicle.assessor.contactInfo }}</p>
+    <div class="d-flex justify-content-start align-items-center">
+      <img [src]="vehicle.assessor.uriPhoto" alt="Foto Asesor" style="width: 100px;">
+    </div>
+  </div>
+</div>
