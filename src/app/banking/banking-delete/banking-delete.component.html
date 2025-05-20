@@ -1,0 +1,39 @@
+<!-- src/app/banking/banking-delete.component.html -->
+<div class="d-flex flex-column justify-content-center align-items-center" style="width:100%; min-height:100%;">
+  <p class="fs-1 mb-5">Sección de Respaldos Bancarios</p>
+
+  <div style="width:100%; padding-left: 11%;">
+    <p class="fs-2 mb-0" style="text-align:left;">Listado de Respaldos</p>
+  </div>
+  <span style="width:80%; height:1px; background-color:black; margin-bottom:16px;"></span>
+
+  <div *ngIf="error" class="alert alert-danger" style="width:80%;">{{ error }}</div>
+
+  <table *ngIf="bankings.length" class="table table-bordered table-responsive mb-5" style="width:80%; table-layout:fixed;">
+    <thead class="table-dark">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Logo</th>
+        <th class="text-center">Teléfono</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let b of bankings">
+        <td class="text-center">{{ b.id }}</td>
+        <td class="text-center">{{ b.name }}</td>
+        <td class="text-center">
+          <img [src]="b.uriLogo" alt="{{ b.name }} logo" style="height:24px;"/>
+        </td>
+        <td class="text-center">{{ b.assessorPhone }}</td>
+        <td class="text-center">
+          <button class="btn btn-info btn-sm me-2" (click)="edit(b.id)">Editar</button>
+          <button class="btn btn-danger btn-sm" (click)="delete(b.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!bankings.length && !error" class="text-muted">No hay respaldos bancarios para mostrar.</p>
+</div>

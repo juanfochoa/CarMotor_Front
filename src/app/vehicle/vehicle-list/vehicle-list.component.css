@@ -1,0 +1,73 @@
+.filter-section {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.filter-section.show {
+  max-height: 500px;
+  padding: 1rem 0;
+  border: 1px solid #dee2e6;
+}
+
+/* Add these new styles */
+.filter-group {
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.filter-group::-webkit-scrollbar {
+  width: 6px;
+}
+
+.filter-group::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.filter-group::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 3px;
+}
+
+.filter-group::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.filter-column {
+  column-count: 2;
+  column-gap: 20px;
+}
+
+.pagination-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.page-size-selector {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-navigation button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.page-navigation button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
