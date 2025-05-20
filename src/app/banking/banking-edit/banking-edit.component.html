@@ -1,0 +1,38 @@
+<!-- src/app/banking/banking-edit.component.html -->
+<div class="container mt-4">
+  <h2 class="mb-4">Editar Respaldo Bancario</h2>
+
+  <div *ngIf="loading" class="text-center">
+    <div class="spinner-border"><span class="visually-hidden">Cargando...</span></div>
+  </div>
+
+  <div *ngIf="error" class="alert alert-danger">{{ error }}</div>
+
+  <form
+    *ngIf="!loading"
+    [formGroup]="bankingForm"
+    (ngSubmit)="onSubmit()"
+    class="row g-3"
+  >
+    <div class="col-md-6">
+      <label class="form-label">Nombre</label>
+      <input formControlName="name" class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">URL del Logo</label>
+      <input formControlName="uriLogo" class="form-control" />
+    </div>
+    <div class="col-md-6">
+      <label class="form-label">Teléfono de Contacto</label>
+      <input formControlName="assessorPhone" class="form-control" />
+    </div>
+    <div class="col-12">
+      <button type="submit" class="btn btn-primary me-2" [disabled]="bankingForm.invalid">
+        Guardar
+      </button>
+      <button type="button" class="btn btn-secondary" (click)="onCancel()">
+        Cancelar
+      </button>
+    </div>
+  </form>
+</div>

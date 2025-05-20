@@ -1,0 +1,49 @@
+<!-- src/app/assessor/assessor-delete.component.html -->
+<div class="d-flex flex-column justify-content-center align-items-center" style="width:100%; min-height:100%;">
+  <p class="fs-1 mb-5">Sección de Asesores</p>
+
+  <div style="width:100%; padding-left: 11%;">
+    <p class="fs-2 mb-0" style="text-align:left;">Listado de Asesores</p>
+  </div>
+  <span style="width:80%; height:1px; background-color:black; margin-bottom:16px;"></span>
+
+  <div *ngIf="error" class="alert alert-danger" style="width:80%;">{{ error }}</div>
+
+  <table *ngIf="assessors.length" class="table table-bordered table-responsive mb-5" style="width:80%; table-layout:fixed;">
+    <thead class="table-dark">
+      <tr>
+        <th class="text-center">ID</th>
+        <th class="text-center">Nombre</th>
+        <th class="text-center">Contacto</th>
+        <th class="text-center">Sede</th>
+        <th class="text-center">Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of assessors">
+        <td class="text-center">{{ a.id }}</td>
+        <td class="text-center">{{ a.name }}</td>
+        <td class="text-center">{{ a.contactInfo }}</td>
+        <td class="text-center">
+          <a [routerLink]="['/locations', a.location.id]">{{ a.location.name }}</a>
+        </td>
+        <td class="text-center">
+          <button
+            class="btn btn-info btn-sm me-2"
+            (click)="edit(a.id)"
+          >
+            Editar
+          </button>
+          <button
+            class="btn btn-danger btn-sm"
+            (click)="delete(a.id)"
+          >
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p *ngIf="!assessors.length && !error" class="text-muted">No hay asesores para mostrar.</p>
+</div>
